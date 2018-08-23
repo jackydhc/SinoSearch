@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+def cfg = rootProject.ext.androidVersionConfig
+android {
+    compileSdkVersion cfg.androidCompileSdkVersion
+    //    buildToolsVersion cfg.androidBuildToolsVersion
+    defaultConfig {
+        applicationId "com.sinoshem.sinosearch"
+        minSdkVersion cfg.androidMinSdkVersion
+        targetSdkVersion cfg.androidTargetSdkVersion
+        versionCode rootProject.ext.sVersionCode as int
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi'
+        }
+
+    }
+    dexOptions {
+        // Warning:The `android.dexOptions.incremental` property is deprecated and it has no effect on the build process.
+        javaMaxHeapSize "4g"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':corelibrary')
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/empty_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    >
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawablePadding="25dp"
+        android:drawableTop="@drawable/pic_no_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:textColor="#4F5054"
+        android:textSize="15sp"
+        tools:text="There is no data!"
+        />
+</FrameLayout>
